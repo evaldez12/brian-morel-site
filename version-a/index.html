@@ -908,7 +908,7 @@ document.getElementById('leadForm').addEventListener('submit',e=>{
 #vsw span{color:#6f7c74;padding:0 4px 0 8px;font-weight:500}
 @media(max-width:480px){#vsw{bottom:10px}#vsw a{padding:8px 10px}}
 </style>
-<div id="vsw" role="navigation" aria-label="Website versions"><span>Version</span><a href="../version-a/" data-v="a">A</a><a href="../version-b/" data-v="b">B</a><a href="../version-c/" data-v="c">C</a><a class="all" href="../">All</a></div>
+<div id="vsw" role="navigation" aria-label="Website versions"><span>Version</span><a href="../version-a/?v=3" data-v="a">A</a><a href="../version-b/?v=3" data-v="b">B</a><a href="../version-c/?v=3" data-v="c">C</a><a class="all" href="../?v=3">All</a></div>
 <script>(function(){var m=location.pathname.match(/\/version-([abc])\//);if(!m)return;var n=document.getElementById('vsw');n.style.display='flex';n.querySelector('[data-v="'+m[1]+'"]').classList.add('on');})();</script>
 </body>
 </html>
