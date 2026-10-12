@@ -444,14 +444,14 @@ document.getElementById('leadForm').addEventListener('submit',e=>{e.preventDefau
 
 <!-- concept-preview version switcher (only shows on the hosted preview) -->
 <style>
-#vsw{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:95;display:none;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(8,10,9,.88);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:600 12px/1 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -10px rgba(0,0,0,.7)}
+#vsw{position:fixed;left:50%;right:auto;top:auto;bottom:14px;width:auto;height:auto;margin:0;transform:translateX(-50%);mix-blend-mode:normal;z-index:95;display:none;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(8,10,9,.88);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:600 12px/1 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -10px rgba(0,0,0,.7)}
 #vsw a{color:#cfd8d2;text-decoration:none;padding:8px 11px;border-radius:999px;letter-spacing:.04em;white-space:nowrap}
 #vsw a.on{background:#2BE26A;color:#041007}
 #vsw a.all{color:#8d9a92;font-weight:500}
 #vsw span{color:#6f7c74;padding:0 4px 0 8px;font-weight:500}
 @media(max-width:480px){#vsw{bottom:10px}#vsw a{padding:8px 10px}}
 </style>
-<nav id="vsw" aria-label="Website versions"><span>Version</span><a href="../version-a/" data-v="a">A</a><a href="../version-b/" data-v="b">B</a><a href="../version-c/" data-v="c">C</a><a class="all" href="../">All</a></nav>
+<div id="vsw" role="navigation" aria-label="Website versions"><span>Version</span><a href="../version-a/" data-v="a">A</a><a href="../version-b/" data-v="b">B</a><a href="../version-c/" data-v="c">C</a><a class="all" href="../">All</a></div>
 <script>(function(){var m=location.pathname.match(/\/version-([abc])\//);if(!m)return;var n=document.getElementById('vsw');n.style.display='flex';n.querySelector('[data-v="'+m[1]+'"]').classList.add('on');})();</script>
 </body>
 </html>
