@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian Morel | From Denied to Approved</title>
+<meta name="description" content="Brian Morel removes negative marks from your credit, rebuilds your profile, and gets you positioned for higher limits and funding. Book a free consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070807;--ink:#f5f7f5;--muted:#9ba49e;--green:#1FE066;--green-deep:#0c9a3f;--red:#ff4d4d;--amber:#ffb340;
+  --line:rgba(255,255,255,.1);--display:"Bebas Neue",Impact,sans-serif;--body:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+body.locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+::selection{background:var(--green);color:#041007}
+#bg{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none}
+.tint{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(80% 60% at 50% 40%,rgba(255,77,77,.22),transparent 70%);transition:opacity .2s}
+.tint.g{background:radial-gradient(80% 60% at 50% 40%,rgba(31,224,102,.22),transparent 70%);opacity:0}
+.wrap{position:relative;z-index:2;width:min(1200px,calc(100% - 32px));margin:0 auto}
+.disp{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:.92;text-transform:uppercase}
+
+/* IG-style text boxes */
+.box{display:inline;background:#000;color:#fff;padding:.08em .28em;box-decoration-break:clone;-webkit-box-decoration-break:clone;line-height:1.25}
+.box.g{background:var(--green);color:#041007}
+.box.w{background:#fff;color:#000}
+
+/* Loader */
+.loader{position:fixed;inset:0;z-index:100;background:#000;display:grid;place-items:center}
+.loader .disp{font-size:clamp(70px,16vw,220px);color:#fff}
+.loader .disp span{color:var(--green)}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:16px 0;background:linear-gradient(rgba(7,8,7,.85),rgba(7,8,7,0));color:#fff}
+nav .wrap{display:flex;justify-content:space-between;align-items:center}
+nav .brand{font-family:var(--display);font-size:26px;letter-spacing:.04em}
+nav .brand small{font-family:var(--body);font-size:11px;letter-spacing:.3em;margin-left:10px;color:#fff;opacity:.7}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;border:0;transition:transform .2s,box-shadow .2s}
+.btn.g{background:var(--green);color:#041007}
+.btn.g:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(31,224,102,.7)}
+.btn.o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn.o:hover{border-color:#fff;transform:translateY(-2px)}
+nav .btn{padding:12px 18px;font-size:12px;background:#fff;color:#000;white-space:nowrap}
+@media(max-width:700px){nav .brand small{display:none}nav .btn{padding:10px 14px;font-size:11px}nav .brand{font-size:22px}}
+
+/* Hero (pinned) */
+.hero{position:relative;z-index:2;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+@media(max-width:700px){.hero .kicker{letter-spacing:.18em;font-size:11px}.hero h1{font-size:clamp(26px,8vw,34px)}}
+.hero .inner{text-align:center;width:min(1100px,100%);padding:0 16px}
+.hero .kicker{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.score-wrap{position:relative;display:inline-block}
+.score-ring{width:clamp(260px,46vw,520px);height:auto;display:block}
+.score-ring .t{fill:none;stroke:rgba(255,255,255,.08);stroke-width:5}
+.score-ring .f{fill:none;stroke:var(--green);stroke-width:5;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;filter:drop-shadow(0 0 10px rgba(31,224,102,.8))}
+.score{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score .n{font-family:var(--display);font-size:clamp(110px,22vw,260px);line-height:.85;color:#fff;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.score .r{margin-top:6px;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--red);font-weight:700}
+.hero h1{font-size:clamp(28px,4.6vw,56px);margin-top:26px;line-height:1.1}
+.hero h1 .l{display:block}
+.hero .after{opacity:0;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px}
+.hint i{width:1px;height:40px;background:linear-gradient(var(--green),transparent);display:block;animation:drop 1.4s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.del{position:absolute;font-size:13px;font-weight:700;background:#000;color:#fff;padding:8px 12px;opacity:0;white-space:nowrap;border:1px solid var(--line)}
+.del s{color:var(--red)}
+.del em{font-style:normal;color:var(--green);margin-left:8px}
+.del.d1{left:0;top:18%}.del.d2{right:0;top:30%}.del.d3{left:4%;bottom:22%}.del.d4{right:4%;bottom:14%}
+@media(max-width:700px){.del{display:none}}
+
+/* Ticker */
+.tick{position:relative;z-index:2;background:var(--green);color:#041007;overflow:hidden;transform:rotate(-1.5deg) scale(1.03);margin:10px 0 40px}
+.tick .t{display:flex;width:max-content;animation:mq 28s linear infinite}
+.tick span{font-family:var(--display);font-size:30px;letter-spacing:.04em;padding:10px 26px;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Sections */
+section{position:relative;z-index:2;padding:clamp(70px,9vw,120px) 0}
+.h2{font-size:clamp(46px,8vw,120px)}
+.h2 .box{line-height:1.1}
+.sub{color:var(--muted);font-size:clamp(16px,1.6vw,19px);max-width:58ch;margin-top:22px}
+
+/* Horizontal rounds */
+.rounds{padding:0}
+.rounds-pin{height:100vh;display:flex;align-items:center;overflow:hidden}
+.track{display:flex;gap:24px;padding:0 max(16px,calc((100vw - 1200px)/2));will-change:transform}
+.panel{flex:0 0 min(82vw,560px);min-height:min(70vh,560px);border:1px solid var(--line);background:rgba(255,255,255,.03);padding:34px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.panel .num{font-family:var(--display);font-size:120px;line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.35)}
+.panel h3{font-family:var(--display);font-size:clamp(40px,5vw,60px);line-height:.95;margin-top:20px}
+.panel p{color:var(--muted);margin-top:14px;max-width:44ch}
+.panel .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.panel .meta span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--line)}
+.panel.hot{background:var(--green);color:#041007;border-color:var(--green)}
+.panel.hot .num{-webkit-text-stroke:1px rgba(0,0,0,.4)}
+.panel.hot p{color:rgba(4,16,7,.75)}
+.panel.hot .meta span{border-color:rgba(0,0,0,.3)}
+.panel .mini{position:absolute;right:-30px;bottom:-30px;width:220px;height:140px;border-radius:16px;background:linear-gradient(135deg,#1a1f1b,#000);border:1px solid var(--line);transform:rotate(-12deg);display:flex;align-items:flex-end;padding:18px;font-family:var(--display);font-size:34px;color:var(--green)}
+.panel.hot .mini{background:#041007}
+.rounds .label{position:absolute;top:30px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:900px){
+  .rounds{padding:70px 0 40px}
+  .rounds-pin{height:auto;display:block;overflow:visible}
+  .rounds .label{position:static;margin-bottom:22px}
+  .track{flex-direction:column;padding:0 16px;gap:14px;transform:none!important}
+  .panel{flex:none;width:100%;min-height:0;padding:26px 22px 30px}
+  .panel .num{font-size:70px}
+  .panel .mini{width:150px;height:90px;font-size:24px;right:-24px;bottom:-24px;padding:12px}
+  .story{aspect-ratio:auto;min-height:360px}
+  .story .chart{bottom:120px;height:90px}
+}
+
+/* Remove list */
+.kill{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.kill ul{list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.kill li{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--display);font-size:clamp(28px,3.6vw,46px);position:relative}
+.kill li::after{content:"";position:absolute;left:0;top:50%;height:3px;width:0;background:var(--green);transition:width .6s cubic-bezier(.7,0,.2,1)}
+.kill li.gone::after{width:100%}
+.kill li.gone{color:var(--muted)}
+.kill li b{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);padding:6px 10px;border:1px solid rgba(255,77,77,.4)}
+.kill li.gone b{color:var(--green);border-color:rgba(31,224,102,.5)}
+@media(max-width:900px){.kill{grid-template-columns:1fr;gap:30px}}
+
+/* Proof wall */
+.wall{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.story{aspect-ratio:9/14;position:relative;border:1px solid var(--line);background:linear-gradient(180deg,#121513,#060706);padding:22px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.story:hover{transform:translateY(-8px) rotate(-1deg)}
+.story .bar{position:absolute;top:10px;left:14px;right:14px;height:2px;background:rgba(255,255,255,.15)}
+.story .bar i{display:block;height:100%;width:60%;background:#fff}
+.story .who{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.story .big{font-family:var(--display);font-size:clamp(60px,8vw,110px);line-height:.85}
+.story .big s{display:block;font-size:.42em;color:var(--muted)}
+.story .big em{font-style:normal;color:var(--green);font-size:.45em;display:block}
+.story .cap{font-size:15px;font-weight:700;line-height:1.3}
+.story .cap .box{font-size:16px}
+.story .chart{position:absolute;inset:auto 0 90px 0;height:120px;opacity:.5}
+.story .chart path{fill:none;stroke:var(--green);stroke-width:3}
+@media(max-width:900px){.wall{grid-template-columns:1fr;max-width:380px;margin-inline:auto}}
+
+/* Cards 3D */
+.fund{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.flip{perspective:1400px;height:280px;display:grid;place-items:center}
+.cardx{width:min(420px,92%);height:250px;position:relative;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.cardx .f,.cardx .b{position:absolute;inset:0;border-radius:22px;backface-visibility:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.2);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)}
+.cardx .f{background:linear-gradient(135deg,#1FE066,#0a7a33);color:#041007}
+.cardx .b{background:linear-gradient(135deg,#1b1f1c,#000);transform:rotateY(180deg)}
+.cardx .lim{font-family:var(--display);font-size:54px;line-height:.9}
+.cardx .lim small{display:block;font-family:var(--body);font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.7;margin-bottom:4px}
+.cardx .no{font-family:var(--display);font-size:22px;letter-spacing:.2em;opacity:.85}
+.cardx .chip{width:46px;height:34px;border-radius:7px;background:linear-gradient(135deg,#f1dd8f,#b48a26)}
+.fund ul{list-style:none;margin-top:26px;display:grid;gap:12px}
+.fund li{display:flex;gap:14px;font-size:16px;color:var(--muted)}
+.fund li b{color:#fff}
+.fund li::before{content:"→";color:var(--green);font-weight:700}
+@media(max-width:900px){.fund{grid-template-columns:1fr}}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.pic{aspect-ratio:4/5;background:#111;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:12px;letter-spacing:.2em;text-transform:uppercase;position:relative;overflow:hidden}
+.pic::after{content:"";position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(transparent,#070807)}
+.pic .tag{position:absolute;bottom:22px;left:22px;z-index:2;font-size:22px;font-weight:700;color:#fff;letter-spacing:0;text-transform:none}
+.quote{font-family:var(--display);font-size:clamp(34px,4.6vw,64px);line-height:.98;margin:20px 0}
+@media(max-width:900px){.about{grid-template-columns:1fr}.pic{max-width:420px}}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line);max-width:860px}
+.faq .q{border-bottom:1px solid var(--line)}
+.faq button{width:100%;background:none;border:0;color:#fff;text-align:left;padding:22px 0;font-family:var(--display);font-size:clamp(24px,3vw,34px);display:flex;justify-content:space-between;gap:20px;cursor:pointer}
+.faq button i{font-style:normal;color:var(--green);transition:transform .3s}
+.faq .q.open button i{transform:rotate(45deg)}
+.faq .a{max-height:0;overflow:hidden;transition:max-height .4s;color:var(--muted);font-size:15px}
+.faq .a p{padding-bottom:22px;max-width:70ch}
+
+/* Book */
+.book{background:var(--green);color:#041007;padding:clamp(60px,8vw,110px) 0}
+.book .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+.book .h2 .box{background:#041007;color:#fff}
+.book .sub{color:rgba(4,16,7,.75)}
+form{display:grid;gap:12px;background:#041007;padding:clamp(22px,3vw,36px);border-radius:22px;color:#fff}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;font-weight:700}
+input,select,textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;padding:14px 16px;font-size:15px;font-family:inherit;border-radius:10px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--green)}
+select{appearance:none}select option{background:#0b0f0c}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.5;text-transform:none;letter-spacing:0;font-weight:400}
+.consent input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--green)}
+.success{display:none;background:#041007;color:#fff;padding:50px 30px;border-radius:22px;text-align:center}
+.success .disp{font-size:54px;color:var(--green)}
+@media(max-width:900px){.book .wrap{grid-template-columns:1fr}.f2{grid-template-columns:1fr}}
+
+footer{position:relative;z-index:2;padding:40px 0;font-size:12px;color:var(--muted);line-height:1.6}
+footer .wrap{display:grid;grid-template-columns:1fr auto;gap:30px}
+footer .links{display:flex;gap:18px}
+@media(max-width:700px){footer .wrap{grid-template-columns:1fr}}
+.rv{opacity:0;transform:translateY(40px)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+<div class="loader" id="loader"><div class="disp" id="loadNum">5<span>30</span></div></div>
+<canvas id="bg"></canvas>
+<div class="tint" id="tintR"></div><div class="tint g" id="tintG"></div>
+
+<nav><div class="wrap"><a href="#top" class="brand">BRIAN MOREL<small>CREDIT & FUNDING</small></a><a href="#book" class="btn">Book a free call</a></div></nav>
+
+<section class="hero" id="top">
+  <div class="del d1"><s>Midland collection</s><em>DELETED</em></div>
+  <div class="del d2"><s>Capital One charge-off</s><em>DELETED</em></div>
+  <div class="del d3"><s>60-day late · auto</s><em>DELETED</em></div>
+  <div class="del d4"><s>Hard inquiry</s><em>DELETED</em></div>
+  <div class="inner">
+    <div class="kicker">Scroll to watch what one round does</div>
+    <div class="score-wrap">
+      <svg class="score-ring" viewBox="0 0 200 200"><circle class="t" cx="100" cy="100" r="92"/><circle class="f" id="ring" cx="100" cy="100" r="92" pathLength="100" transform="rotate(-90 100 100)"/></svg>
+      <div class="score"><div class="n" id="scoreN">530</div><div class="r" id="scoreR">Poor</div></div>
+    </div>
+    <h1 class="disp" id="h1"><span class="l"><span class="box">From denied</span></span><span class="l"><span class="box g" id="h1b">to approved.</span></span></h1>
+    <div class="after" id="after">
+      <a href="#book" class="btn g">Book my free consultation</a>
+      <a href="#proof" class="btn o">See the receipts</a>
+    </div>
+  </div>
+  <div class="hint">Scroll<i></i></div>
+</section>
+
+<div class="tick"><div class="t" id="tick">
+  <span>25 negatives deleted ★</span><span>+168 pts in one round ★</span><span>530 → 720 in 3 months ★</span><span>700+ club ★</span><span>Results don't lie ★</span><span>Personal & business funding ★</span>
+</div></div>
+
+<!-- ROUNDS -->
+<section class="rounds" id="process">
+  <div class="rounds-pin" id="roundsPin">
+    <div class="label">How it works · drag or scroll</div>
+    <div class="track" id="track">
+      <div class="panel">
+        <div><div class="num">00</div><h3 class="disp">Free<br>consultation</h3><p>15 minutes. We pull all three bureaus, look at what's actually dragging you down, and you tell me what you're trying to get approved for.</p></div>
+        <div class="meta"><span>Day 1</span><span>No obligation</span></div>
+      </div>
+      <div class="panel">
+        <div><div class="num">01</div><h3 class="disp">Round one:<br>the purge</h3><p>Inaccurate, unverifiable, and outdated items get challenged with the bureaus and creditors. This is where the big deletions happen.</p></div>
+        <div class="meta"><span>30–45 days</span><span>Collections · charge-offs · lates</span></div>
+        <div class="mini">-25 items</div>
+      </div>
+      <div class="panel">
+        <div><div class="num">02</div><h3 class="disp">Round two:<br>the rebuild</h3><p>What's left gets re-challenged while we start adding positive history: the right cards, the right utilization, the right timing.</p></div>
+        <div class="meta"><span>30–45 days</span><span>Score climbing</span></div>
+        <div class="mini">700+</div>
+      </div>
+      <div class="panel hot">
+        <div><div class="num">03</div><h3 class="disp">The game plan:<br>get funded</h3><p>A written roadmap for higher limits, personal funding, or business capital. You know exactly what to apply for and when.</p></div>
+        <div class="meta"><span>Your roadmap</span><span>Limits · funding</span></div>
+        <div class="mini">$50K</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KILL LIST -->
+<section id="remove">
+  <div class="wrap kill">
+    <div class="rv">
+      <h2 class="h2 disp"><span class="box">What we</span><br><span class="box g">delete.</span></h2>
+      <p class="sub">Most people carry items that are inaccurate, past their reporting window, or can't be verified. We go after those first, hardest.</p>
+    </div>
+    <ul id="killList" class="rv">
+      <li>Collections <b>Negative</b></li>
+      <li>Charge-offs <b>Negative</b></li>
+      <li>Late payments <b>Negative</b></li>
+      <li>Hard inquiries <b>Negative</b></li>
+      <li>Repossessions <b>Negative</b></li>
+      <li>Medical bills <b>Negative</b></li>
+      <li>Bankruptcies <b>Negative</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="wrap">
+    <div class="rv"><h2 class="h2 disp"><span class="box">The receipts.</span></h2><p class="sub">Straight from client reports. Names hidden, numbers real.</p></div>
+    <div class="wall">
+      <div class="story rv"><div class="bar"><i></i></div><div class="who">Client 01 · 3 bureaus · Mar 2026</div><svg class="chart" viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 100 L60 95 L120 90 L180 60 L240 30 L300 10"/></svg><div><div class="big"><s>548</s>716<em>+168 pts</em></div><div class="cap"><span class="box">25 negatives deleted.</span> <span class="box">Results don't lie.</span></div></div></div>
+      <div class="story rv"><div class="bar"><i></i></div><div class="who">Client 02 · one round · May 2026</div><svg class="chart" viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 100 L80 98 L150 70 L220 35 L300 15"/></svg><div><div class="big"><s>624</s>744<em>+120 pts</em></div><div class="cap"><span class="box g">700+ club after one round.</span></div></div></div>
+      <div class="story rv"><div class="bar"><i></i></div><div class="who">Client 03 · 3 months · May 2026</div><svg class="chart" viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 105 L50 70 L100 80 L160 50 L220 50 L300 8"/></svg><div><div class="big"><s>530</s>720<em>+190 pts</em></div><div class="cap"><span class="box">"Thank you. Hit him up</span> <span class="box">for your credit repair."</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDING -->
+<section id="funding">
+  <div class="wrap fund">
+    <div class="flip rv"><div class="cardx" id="cardx">
+      <div class="f"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;letter-spacing:.3em;font-weight:700">PERSONAL · APPROVED</span><span class="chip"></span></div><div><div class="lim"><small>New limit</small>$25,000</div><div class="no">•••• •••• •••• 4471</div></div></div>
+      <div class="b"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;letter-spacing:.3em;font-weight:700;color:var(--green)">BUSINESS · APPROVED</span><span class="chip"></span></div><div><div class="lim"><small>Credit line</small>$50,000</div><div class="no">•••• •••• •••• 0921</div></div></div>
+    </div></div>
+    <div class="rv">
+      <h2 class="h2 disp"><span class="box">Clean credit</span><br><span class="box g">is a tool.</span></h2>
+      <p class="sub">Once the negatives are gone, your profile becomes leverage. The game plan shows you how to use it.</p>
+      <ul>
+        <li><div><b>Higher card limits.</b> Which banks, in what order, and when to ask for increases.</div></li>
+        <li><div><b>Personal funding.</b> Positioned so lenders say yes at better rates.</div></li>
+        <li><div><b>Business funding.</b> Build a fundable business profile without draining personal credit.</div></li>
+      </ul>
+      <div style="margin-top:30px"><a href="#book" class="btn g">Start with a free call</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="pic rv">Portrait photo goes here<div class="tag">Brian Morel · @ceoteddy_</div></div>
+    <div class="rv">
+      <div class="kicker" style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)">Who you're working with</div>
+      <div class="quote disp">"I love what I do. Every deletion is somebody's car, somebody's apartment, somebody's first business loan."</div>
+      <p class="sub">Brian works directly with every client. No call centers, no templates. He audits your profile himself, runs each round, and writes your funding game plan once the negatives are gone.</p>
+      <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap"><a href="#book" class="btn g">Work with Brian</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener" class="btn o">Instagram</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="rv"><h2 class="h2 disp"><span class="box">Straight answers.</span></h2></div>
+    <div class="faq rv" style="margin-top:36px">
+      <div class="q"><button>How long until I see results?<i>+</i></button><div class="a"><p>Most clients see first deletions inside the first 30 to 45 day round. Bigger profiles take two to three rounds. Some hit the 700s after one.</p></div></div>
+      <div class="q"><button>Can you remove accurate items?<i>+</i></button><div class="a"><p>We challenge items that are inaccurate, incomplete, outdated, or can't be verified. A lot of "accurate" items fail that test when you look at dates, balances, and reporting details. We'll tell you what's realistic on the call.</p></div></div>
+      <div class="q"><button>Do you guarantee a score?<i>+</i></button><div class="a"><p>No one can legally guarantee a specific score, and you should walk away from anyone who does. What we show you is a track record and a clear plan for your report.</p></div></div>
+      <div class="q"><button>What's the free call?<i>+</i></button><div class="a"><p>15 minutes. Where your credit stands, what's holding it back, your goals, and whether we're a fit. No pressure.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book" id="book">
+  <div class="wrap">
+    <div>
+      <h2 class="h2 disp"><span class="box">Imagine your score</span><br><span class="box">60 days from now.</span></h2>
+      <p class="sub">Fill this out and Brian reaches out to lock in your free call. Under a minute.</p>
+    </div>
+    <div>
+      <form id="leadForm" novalidate>
+        <div class="f2"><div><label>First name</label><input name="first" required placeholder="First"></div><div><label>Last name</label><input name="last" required placeholder="Last"></div></div>
+        <div class="f2"><div><label>Phone</label><input name="phone" type="tel" required placeholder="(555) 555-5555"></div><div><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div></div>
+        <div class="f2"><div><label>Current score</label><select name="score"><option>Under 500</option><option>500–579</option><option>580–649</option><option>650–699</option><option>700+</option><option>Not sure</option></select></div><div><label>Main goal</label><select name="goal"><option>Remove negatives</option><option>Buy a car</option><option>Buy a home</option><option>Higher card limits</option><option>Business funding</option><option>Personal funding</option></select></div></div>
+        <div><label>Anything we should know?</label><textarea name="notes" rows="3" placeholder="Collections, late payments, a denial you just got..."></textarea></div>
+        <label class="consent"><input type="checkbox" name="consent" required><span>I agree Brian Morel may contact me by phone, text, or email about my request. Message and data rates may apply. Reply STOP to opt out.</span></label>
+        <button type="submit" class="btn g" style="justify-content:center">Book my free consultation →</button>
+      </form>
+      <div class="success" id="success"><div class="disp">You're in.</div><p style="color:var(--muted);margin-top:8px">Brian will reach out shortly to confirm your call time.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div><b style="color:#fff;font-family:var(--display);font-size:22px;letter-spacing:.04em">BRIAN MOREL</b><p style="margin-top:10px;max-width:70ch">Individual results vary and depend on the accuracy and age of items on your report. No specific score or outcome is guaranteed. Brian Morel is not a law firm and does not provide legal advice. You have the right to dispute inaccurate information on your credit report directly with the credit bureaus at no cost.</p></div>
+  <div class="links"><a href="#">Privacy</a><a href="#">Terms</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener">@ceoteddy_</a></div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ignoreMobileResize:true});
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile=matchMedia('(max-width: 900px)').matches;
+
+/* ---------- THREE: ring of particles that tightens as score climbs ---------- */
+let progress=0;
+(function(){
+  const canvas=document.getElementById('bg');
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1.5:2));
+  const scene=new THREE.Scene(); const cam=new THREE.PerspectiveCamera(55,1,.1,100); cam.position.z=16;
+  const mobile=innerWidth<768; const N=mobile?900:2400,pos=new Float32Array(N*3),base=[];
+  for(let i=0;i<N;i++){const a=Math.random()*Math.PI*2,r=7+Math.random()*9,z=(Math.random()-.5)*8;base.push([a,r,z]);}
+  const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const mat=new THREE.PointsMaterial({color:0x1FE066,size:.06,transparent:true,opacity:.7,blending:THREE.AdditiveBlending,depthWrite:false});
+  const pts=new THREE.Points(geo,mat); scene.add(pts);
+  const torus=new THREE.Mesh(new THREE.TorusGeometry(6.5,.02,8,160),new THREE.MeshBasicMaterial({color:0x1FE066,transparent:true,opacity:.35})); scene.add(torus);
+  let mx=0,my=0; addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;});
+  function rs(){renderer.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();} addEventListener('resize',rs); rs();
+  const clock=new THREE.Clock();
+  function tick(){
+    const t=clock.getElapsedTime(); const arr=geo.attributes.position.array;
+    for(let i=0;i<N;i++){const [a,r,z]=base[i]; const rr=r*(1-progress*.45)+Math.sin(t+i)*.15; const aa=a+t*.08; arr[i*3]=Math.cos(aa)*rr; arr[i*3+1]=Math.sin(aa)*rr*.6; arr[i*3+2]=z;}
+    geo.attributes.position.needsUpdate=true;
+    mat.color.setHex(progress<.5?0xff4d4d:0x1FE066); mat.color.lerp(new THREE.Color(0x1FE066),progress);
+    torus.rotation.x=1.2+my*.3; torus.rotation.y=t*.15+mx*.5; torus.scale.setScalar(1+progress*.15);
+    pts.rotation.x=.6+my*.2; pts.rotation.y=mx*.3;
+    cam.position.y=-scrollY*.003;
+    renderer.render(scene,cam); requestAnimationFrame(tick);
+  }
+  if(!reduce) tick(); else renderer.render(scene,cam);
+})();
+
+/* loader safety net */
+setTimeout(()=>{ const l=document.getElementById('loader'); if(l && getComputedStyle(l).display!=='none'){ l.style.display='none'; document.body.classList.remove('locked'); } },4000);
+/* ---------- Loader ---------- */
+(function(){
+  const o={v:530},n=document.getElementById('loadNum');
+  gsap.timeline({onComplete(){document.body.classList.remove('locked');}})
+    .to(o,{v:720,duration:reduce?0:1.4,ease:'power3.inOut',onUpdate(){const s=String(Math.round(o.v));n.innerHTML=s[0]+'<span>'+s.slice(1)+'</span>';}})
+    .to('#loader',{yPercent:-100,duration:.8,ease:'power4.inOut'},'+=.2').set('#loader',{display:'none'})
+    .from('.hero .inner > *',{opacity:0,y:30,stagger:.1,duration:.8,ease:'power3.out'},'-=.4');
+})();
+
+/* ---------- Pinned hero: score scrubs with scroll ---------- */
+(function(){
+  const n=document.getElementById('scoreN'), r=document.getElementById('scoreR'), ring=document.getElementById('ring'), o={v:530};
+  const rating=s=>s>=740?'Excellent':s>=700?'Very Good':s>=650?'Good':s>=580?'Fair':'Poor';
+  const tl=gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'+=220%',pin:true,scrub:.6,onUpdate(st){progress=st.progress;document.getElementById('tintR').style.opacity=1-st.progress;document.getElementById('tintG').style.opacity=st.progress;}}});
+  tl.to(o,{v:720,ease:'none',duration:1,onUpdate(){const v=Math.round(o.v);n.textContent=v;r.textContent=rating(v);r.style.color=v>=700?'#1FE066':v>=650?'#ffb340':'#ff4d4d';ring.style.strokeDashoffset=100-((v-300)/550)*100;}},0)
+    .to('.del.d1',{opacity:1,x:20,duration:.1},.15).to('.del.d2',{opacity:1,x:-20,duration:.1},.35).to('.del.d3',{opacity:1,x:20,duration:.1},.55).to('.del.d4',{opacity:1,x:-20,duration:.1},.72)
+    .to('#after',{opacity:1,duration:.15},.85).to('.hint',{opacity:0,duration:.1},.1);
+})();
+
+/* ---------- Horizontal rounds ---------- */
+(function(){
+  if(isMobile) return; // stacked vertically on phones
+  const track=document.getElementById('track');
+  const getX=()=>-(track.scrollWidth-innerWidth);
+  gsap.to(track,{x:getX,ease:'none',scrollTrigger:{trigger:'#roundsPin',start:'top top',end:()=>'+='+(track.scrollWidth-innerWidth+200),pin:true,scrub:.8,invalidateOnRefresh:true}});
+})();
+
+/* ---------- Reveals ---------- */
+ScrollTrigger.batch('.rv',{start:'top 88%',onEnter:b=>gsap.to(b,{opacity:1,y:0,duration:.9,stagger:.12,ease:'power3.out',overwrite:true})});
+ScrollTrigger.create({trigger:'#killList',start:'top 70%',once:true,onEnter(){[...document.querySelectorAll('#killList li')].forEach((li,i)=>setTimeout(()=>{li.classList.add('gone');li.querySelector('b').textContent='Deleted';},400+i*350));}});
+ScrollTrigger.create({trigger:'#cardx',start:'top 70%',onEnter(){flip();}});
+let flipped=false; function flip(){flipped=!flipped;document.getElementById('cardx').style.transform=flipped?'rotateY(180deg)':'rotateY(0)';}
+document.getElementById('cardx').addEventListener('click',flip); setInterval(flip,5000);
+
+/* ---------- FAQ / form / ticker ---------- */
+document.querySelectorAll('.faq button').forEach(b=>b.addEventListener('click',()=>{const q=b.parentElement,o=q.classList.contains('open');document.querySelectorAll('.faq .q.open').forEach(x=>{x.classList.remove('open');x.querySelector('.a').style.maxHeight=null;});if(!o){q.classList.add('open');const a=q.querySelector('.a');a.style.maxHeight=a.scrollHeight+'px';}}));
+document.getElementById('leadForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity();return;}console.log('lead',Object.fromEntries(new FormData(f).entries()));f.style.display='none';document.getElementById('success').style.display='block';});
+(function(){const t=document.getElementById('tick');t.innerHTML+=t.innerHTML;})();
+</script>
+
+<!-- concept-preview version switcher (only shows on the hosted preview) -->
+<style>
+#vsw{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:95;display:none;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(8,10,9,.88);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:600 12px/1 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -10px rgba(0,0,0,.7)}
+#vsw a{color:#cfd8d2;text-decoration:none;padding:8px 11px;border-radius:999px;letter-spacing:.04em;white-space:nowrap}
+#vsw a.on{background:#2BE26A;color:#041007}
+#vsw a.all{color:#8d9a92;font-weight:500}
+#vsw span{color:#6f7c74;padding:0 4px 0 8px;font-weight:500}
+@media(max-width:480px){#vsw{bottom:10px}#vsw a{padding:8px 10px}}
+</style>
+<nav id="vsw" aria-label="Website versions"><span>Version</span><a href="../version-a/" data-v="a">A</a><a href="../version-b/" data-v="b">B</a><a href="../version-c/" data-v="c">C</a><a class="all" href="../">All</a></nav>
+<script>(function(){var m=location.pathname.match(/\/version-([abc])\//);if(!m)return;var n=document.getElementById('vsw');n.style.display='flex';n.querySelector('[data-v="'+m[1]+'"]').classList.add('on');})();</script>
+</body>
+</html>

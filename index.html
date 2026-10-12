@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian Morel · Website Concepts</title>
+<meta name="description" content="Three website concepts for Brian Morel, Credit & Funding. Pick A, B, or C.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050706;--panel:#0d120f;--line:rgba(255,255,255,.1);--text:#f4f7f5;--muted:#9aa7a0;--green:#2BE26A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;
+  background-image:radial-gradient(60% 40% at 50% 0%,rgba(43,226,106,.16),transparent 70%)}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:64px 0 48px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:600}
+.tag i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(36px,6vw,64px);letter-spacing:-.035em;line-height:1.02;margin:16px 0 14px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--muted);font-size:clamp(16px,1.6vw,18px);max-width:60ch}
+.how{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 40px}
+.how span{font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.how b{color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(43,226,106,.55)}
+.shot{position:relative;aspect-ratio:16/10;background:#000;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.shot .phone{position:absolute;right:12px;bottom:-30px;width:24%;border-radius:12px;border:2px solid rgba(255,255,255,.18);box-shadow:0 16px 30px -10px rgba(0,0,0,.9)}
+.body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.letter{font-family:"Space Grotesk",sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700}
+.body h2{font-family:"Space Grotesk",sans-serif;font-size:26px;letter-spacing:-.02em;line-height:1.1}
+.body p{color:var(--muted);font-size:14.5px}
+.body ul{list-style:none;display:grid;gap:6px;font-size:13.5px;color:#cdd6d0;margin-top:2px}
+.body li::before{content:"✓";color:var(--green);margin-right:8px;font-weight:700}
+.open{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between}
+.open b{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#041007;font-weight:600;font-size:14px;padding:12px 18px;border-radius:999px}
+.open small{color:var(--muted);font-size:12px}
+.foot{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+@media(max-width:960px){.grid{grid-template-columns:1fr;max-width:560px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tag"><i></i>Website concepts · Brian Morel</div>
+  <h1>Three directions. <em>Pick your favorite.</em></h1>
+  <p class="lead">Each version is a complete, working site built around one goal: turning visitors into booked consultations. Open all three, try them on your phone, then reply with A, B, or C.</p>
+  <div class="how">
+    <span><b>1.</b> Open each version</span>
+    <span><b>2.</b> Check it on your phone</span>
+    <span><b>3.</b> Reply with your pick and any changes</span>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="version-a/">
+      <div class="shot"><img src="previews/a-desktop.jpg" alt="Version A desktop hero with a live credit score dashboard"><img class="phone" src="previews/a-mobile.jpg" alt=""></div>
+      <div class="body">
+        <div class="letter">Version A</div>
+        <h2>The Dashboard</h2>
+        <p>Dark and cinematic. A live 3D credit dashboard shows real client scores climbing.</p>
+        <ul><li>Feels like high-end software</li><li>Negatives get deleted on screen</li><li>Credit cards fan out as you scroll</li></ul>
+        <div class="open"><b>Open A →</b><small>Most "tech"</small></div>
+      </div>
+    </a>
+    <a class="card" href="version-b/">
+      <div class="shot"><img src="previews/b-desktop.jpg" alt="Version B desktop hero with a giant score of 720"><img class="phone" src="previews/b-mobile.jpg" alt=""></div>
+      <div class="body">
+        <div class="letter">Version B</div>
+        <h2>The Story</h2>
+        <p>Built like your Instagram stories. The score climbs from 530 to 720 as you scroll.</p>
+        <ul><li>Bold, loud, social-media energy</li><li>Matches your current audience</li><li>"The receipts" proof wall</li></ul>
+        <div class="open"><b>Open B →</b><small>Most "you"</small></div>
+      </div>
+    </a>
+    <a class="card" href="version-c/">
+      <div class="shot"><img src="previews/c-desktop.jpg" alt="Version C desktop hero with a 3D credit card"><img class="phone" src="previews/c-mobile.jpg" alt=""></div>
+      <div class="body">
+        <div class="letter">Version C</div>
+        <h2>The Premium</h2>
+        <p>Clean fintech look. A 3D credit card with your name follows the cursor.</p>
+        <ul><li>Reads like an established firm</li><li>Builds the most trust with new leads</li><li>Clear services and process</li></ul>
+        <div class="open"><b>Open C →</b><small>Most "established"</small></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="foot">
+    <span>Concept previews. Forms are not live yet. Names, colors and copy can all change.</span>
+    <span>Prepared by Ed · BizAllies</span>
+  </div>
+</div>
+</body>
+</html>
