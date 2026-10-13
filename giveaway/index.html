@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Win a Free Credit Repair Program | Brian Morel</title>
+<meta name="description" content="Enter to win a free credit repair program, 50% off, or 20% off. No purchase necessary.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/pages.css">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="../"><i></i>BRIAN MOREL <span>Credit &amp; Funding</span></a></div></header>
+<main>
+
+<section class="hero"><div class="wrap split">
+  <div>
+    <div class="eyebrow">Giveaway · No purchase necessary</div>
+    <h1>Win a free <em>credit repair program.</em></h1>
+    <p class="lead">Three winners, drawn live on Instagram. Enter in 30 seconds.</p>
+    <div class="count" id="count" hidden>
+      <div><b id="cd">0</b><span>Days</span></div><div><b id="ch">0</b><span>Hours</span></div><div><b id="cm">0</b><span>Min</span></div>
+    </div>
+    <p class="note" style="margin-top:10px">Entries close <span data-fill="giveaway.endDate" class="ph">[end date]</span>. Winners drawn <span data-fill="giveaway.drawingDate" class="ph">[drawing date]</span>.</p>
+  </div>
+  <div class="grid" style="gap:12px">
+    <div class="card prize first"><div class="place">1st</div><h3 style="margin-top:10px">Free Rebuild program</h3><p>Up to 6 months of credit repair plus your written game plan. Approx. value <span data-fill="giveaway.prize1Value" class="ph">[$]</span>.</p></div>
+    <div class="grid g2" style="gap:12px">
+      <div class="card prize"><div class="place">2nd</div><h3 style="margin-top:10px">50% off</h3><p>Any package, up to 6 months. Approx. value <span data-fill="giveaway.prize2Value" class="ph">[$]</span>.</p></div>
+      <div class="card prize"><div class="place">3rd</div><h3 style="margin-top:10px">20% off</h3><p>Any package, up to 6 months. Approx. value <span data-fill="giveaway.prize3Value" class="ph">[$]</span>.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="enter"><div class="wrap split">
+  <div>
+    <h2>Enter the <em>giveaway</em></h2>
+    <ul class="ck" style="margin-top:14px;color:var(--muted)">
+      <li>Open to adults 18+ in <span data-fill="giveaway.eligibleStates" class="ph">[eligible states]</span></li>
+      <li>One entry per person</li>
+      <li>Winners are picked at random and announced live</li>
+      <li>Everyone who enters can book a free credit review</li>
+    </ul>
+    <p class="note" style="margin-top:18px">No purchase necessary. A purchase will not improve your chances of winning. See the <a href="rules/">Official Rules</a>. This promotion is not sponsored, endorsed, or administered by, or associated with, Instagram or Facebook.</p>
+  </div>
+  <div class="form-card">
+    <form data-lead-form="giveaway">
+      <div class="hp" aria-hidden="true"><label>Website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="f2"><div><label for="gfn">First name</label><input id="gfn" name="first" required autocomplete="given-name"></div><div><label for="gln">Last name</label><input id="gln" name="last" required autocomplete="family-name"></div></div>
+      <div class="f2"><div><label for="gph">Phone</label><input id="gph" name="phone" type="tel" required autocomplete="tel"></div><div><label for="gem">Email</label><input id="gem" name="email" type="email" required autocomplete="email"></div></div>
+      <div class="f2">
+        <div><label for="gsc">Current score range</label><select id="gsc" name="score_range"><option>Not sure</option><option>Under 500</option><option>500–579</option><option>580–649</option><option>650–699</option><option>700+</option></select></div>
+        <div><label for="ggo">Main goal</label><select id="ggo" name="goal"><option>Remove negatives</option><option>Buy a car</option><option>Buy a home</option><option>Higher card limits</option><option>Business funding</option></select></div>
+      </div>
+      <div><label for="gwh">When do you want to start?</label><select id="gwh" name="start_timeline"><option>As soon as possible</option><option>In 1–3 months</option><option>Just exploring</option></select></div>
+      <label class="check"><input type="checkbox" name="rules_ok" required><span>I'm 18 or older and agree to the <a href="rules/">Official Rules</a>.</span></label>
+      <label class="check"><input type="checkbox" name="sms_consent" value="yes"><span>Text me about my request. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not required to get help. See our <a href="../privacy/">Privacy Policy</a> and <a href="../sms-terms/">SMS Terms</a>.</span></label>
+      <div data-turnstile></div>
+        <div class="form-error" data-lead-error hidden></div>
+        <button type="submit" class="btn primary" style="width:100%;padding:17px">Enter the giveaway</button>
+    </form>
+  </div>
+</div></section>
+<script>
+(function(){
+  var iso = ((window.SITE_CONFIG || {}).giveaway || {}).endDateISO;
+  if (!iso) return;
+  var end = new Date(iso).getTime(); if (isNaN(end)) return;
+  var box = document.getElementById('count'); box.hidden = false;
+  function tick(){
+    var ms = Math.max(0, end - Date.now());
+    document.getElementById('cd').textContent = Math.floor(ms / 864e5);
+    document.getElementById('ch').textContent = Math.floor(ms / 36e5) % 24;
+    document.getElementById('cm').textContent = Math.floor(ms / 6e4) % 60;
+  }
+  tick(); setInterval(tick, 30000);
+})();
+</script>
+
+</main>
+<footer class="foot"><div class="wrap">
+  <span>© <span id="yr">2026</span> <span data-fill-soft="legalName">Brian Morel Credit &amp; Funding</span></span>
+  <nav><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a><a href="rules/">Official Rules</a></nav>
+</div></footer>
+<script src="../assets/site-config.js"></script>
+<script src="../assets/lead.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

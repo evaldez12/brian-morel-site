@@ -345,12 +345,15 @@ footer .links{display:flex;gap:18px}
       <p class="sub">Fill this out and Brian reaches out to lock in your free call. Under a minute.</p>
     </div>
     <div>
-      <form id="leadForm" novalidate>
+      <form id="leadForm" novalidate data-lead-form="consultation">
         <div class="f2"><div><label>First name</label><input name="first" required placeholder="First"></div><div><label>Last name</label><input name="last" required placeholder="Last"></div></div>
         <div class="f2"><div><label>Phone</label><input name="phone" type="tel" required placeholder="(555) 555-5555"></div><div><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div></div>
         <div class="f2"><div><label>Current score</label><select name="score"><option>Under 500</option><option>500–579</option><option>580–649</option><option>650–699</option><option>700+</option><option>Not sure</option></select></div><div><label>Main goal</label><select name="goal"><option>Remove negatives</option><option>Buy a car</option><option>Buy a home</option><option>Higher card limits</option><option>Business funding</option><option>Personal funding</option></select></div></div>
         <div><label>Anything we should know?</label><textarea name="notes" rows="3" placeholder="Collections, late payments, a denial you just got..."></textarea></div>
-        <label class="consent"><input type="checkbox" name="consent" required><span>I agree Brian Morel may contact me by phone, text, or email about my request. Message and data rates may apply. Reply STOP to opt out.</span></label>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+          <label class="consent" style="text-transform:none;letter-spacing:0"><input type="checkbox" name="sms_consent" value="yes"><span>Text me about my request. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not required to get help. See our <a href="../privacy/" style="color:inherit;text-decoration:underline">Privacy Policy</a> and <a href="../sms-terms/" style="color:inherit;text-decoration:underline">SMS Terms</a>.</span></label>
+          <div data-turnstile></div>
+          <div data-lead-error hidden style="background:rgba(255,93,93,.12);border:1px solid rgba(255,93,93,.4);color:#ffb3b3;border-radius:12px;padding:12px 14px;font-size:14px"></div>
         <button type="submit" class="btn g" style="justify-content:center">Book my free consultation →</button>
       </form>
       <div class="success" id="success"><div class="disp">You're in.</div><p style="color:var(--muted);margin-top:8px">Brian will reach out shortly to confirm your call time.</p></div>
@@ -360,7 +363,7 @@ footer .links{display:flex;gap:18px}
 
 <footer><div class="wrap">
   <div><b style="color:#fff;font-family:var(--display);font-size:22px;letter-spacing:.04em">BRIAN MOREL</b><p style="margin-top:10px;max-width:70ch">Individual results vary and depend on the accuracy and age of items on your report. No specific score or outcome is guaranteed. Brian Morel is not a law firm and does not provide legal advice. You have the right to dispute inaccurate information on your credit report directly with the credit bureaus at no cost.</p></div>
-  <div class="links"><a href="#">Privacy</a><a href="#">Terms</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener">@ceoteddy_</a></div>
+  <div class="links"><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener">@ceoteddy_</a></div>
 </div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -438,7 +441,7 @@ document.getElementById('cardx').addEventListener('click',flip); setInterval(fli
 
 /* ---------- FAQ / form / ticker ---------- */
 document.querySelectorAll('.faq button').forEach(b=>b.addEventListener('click',()=>{const q=b.parentElement,o=q.classList.contains('open');document.querySelectorAll('.faq .q.open').forEach(x=>{x.classList.remove('open');x.querySelector('.a').style.maxHeight=null;});if(!o){q.classList.add('open');const a=q.querySelector('.a');a.style.maxHeight=a.scrollHeight+'px';}}));
-document.getElementById('leadForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity();return;}console.log('lead',Object.fromEntries(new FormData(f).entries()));f.style.display='none';document.getElementById('success').style.display='block';});
+/* Form submission is handled by ../assets/lead.js */
 (function(){const t=document.getElementById('tick');t.innerHTML+=t.innerHTML;})();
 </script>
 
@@ -453,5 +456,7 @@ document.getElementById('leadForm').addEventListener('submit',e=>{e.preventDefau
 </style>
 <div id="vsw" role="navigation" aria-label="Website versions"><span>Version</span><a href="../version-a/?v=3" data-v="a">A</a><a href="../version-b/?v=3" data-v="b">B</a><a href="../version-c/?v=3" data-v="c">C</a><a class="all" href="../?v=3">All</a></div>
 <script>(function(){var m=location.pathname.match(/\/version-([abc])\//);if(!m)return;var n=document.getElementById('vsw');n.style.display='flex';n.querySelector('[data-v="'+m[1]+'"]').classList.add('on');})();</script>
+<script src="../assets/site-config.js"></script>
+<script src="../assets/lead.js"></script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank you | Brian Morel</title>
+<meta name="description" content="Your request was received.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/pages.css">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="../"><i></i>BRIAN MOREL <span>Credit &amp; Funding</span></a></div></header>
+<main>
+
+<section class="hero"><div class="narrow">
+  <div class="eyebrow" id="tyEyebrow">You're in</div>
+  <h1 id="tyTitle">Got it. <em>Let's book your call.</em></h1>
+  <p class="lead" id="tyLead">Pick a time below for your free credit review. You'll also get a text or email to confirm.</p>
+</div></section>
+<section style="padding-top:8px"><div class="narrow">
+  <div class="embed" id="embed" hidden></div>
+  <div class="card" id="noEmbed">
+    <h3>What happens next</h3>
+    <ol class="steps" id="tySteps">
+      <li>Brian reviews your answers.</li>
+      <li>You get a text or call to lock in a time.</li>
+      <li>You leave the call with a clear plan, whether you sign up or not.</li>
+    </ol>
+  </div>
+</div></section>
+<script>
+(function(){
+  var f = new URLSearchParams(location.search).get('f') || 'consultation';
+  var C = window.SITE_CONFIG || {};
+  var G = C.giveaway || {};
+  var v = {
+    funding: ['Request received', 'Thanks. <em>Let\u2019s map out your funding.</em>', 'Pick a time below for your funding review. We\u2019ll go over your options and costs before anything is applied for.'],
+    giveaway: ['You\u2019re entered', 'You\u2019re in the drawing. <em>Good luck!</em>', 'Winners are drawn live on Instagram' + (G.drawingDate ? ' on ' + G.drawingDate : '') + '. While you wait, you can book a free credit review below. It does not change your chances.'],
+    partner: ['Welcome aboard', 'Thanks for <em>partnering with us.</em>', 'Brian will reach out within one business day with your partner link and referral cards.']
+  }[f];
+  if (v) {
+    document.getElementById('tyEyebrow').textContent = v[0];
+    document.getElementById('tyTitle').innerHTML = v[1];
+    document.getElementById('tyLead').textContent = v[2];
+  }
+  if (f === 'partner') {
+    document.getElementById('tySteps').innerHTML = '<li>We set up your personal referral link.</li><li>We drop off cards with your QR code.</li><li>You get a monthly update on every person you sent.</li>';
+    return;
+  }
+  if (C.bookingEmbedUrl) {
+    var box = document.getElementById('embed');
+    box.innerHTML = '<iframe src="' + C.bookingEmbedUrl + '" title="Book a call" loading="lazy"></iframe>';
+    box.hidden = false;
+    document.getElementById('noEmbed').hidden = true;
+  }
+})();
+</script>
+
+</main>
+<footer class="foot"><div class="wrap">
+  <span>© <span id="yr">2026</span> <span data-fill-soft="legalName">Brian Morel Credit &amp; Funding</span></span>
+  <nav><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a></nav>
+</div></footer>
+<script src="../assets/site-config.js"></script>
+<script src="../assets/lead.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

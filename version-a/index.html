@@ -628,7 +628,7 @@ html{overflow-x:hidden}
         </div>
       </div>
       <div>
-        <form id="leadForm" novalidate>
+        <form id="leadForm" novalidate data-lead-form="consultation">
           <div class="f2">
             <div><label>First name</label><input type="text" name="first" required placeholder="Brian"></div>
             <div><label>Last name</label><input type="text" name="last" required placeholder="Morel"></div>
@@ -644,7 +644,10 @@ html{overflow-x:hidden}
               <select name="goal"><option>Remove negatives</option><option>Buy a car</option><option>Buy a home</option><option>Higher card limits</option><option>Business funding</option><option>Personal funding</option></select></div>
           </div>
           <div><label>Anything we should know?</label><textarea name="notes" rows="3" placeholder="Collections, late payments, a denial you just got..."></textarea></div>
-          <label class="consent" style="text-transform:none;letter-spacing:0"><input type="checkbox" name="consent" required><span>I agree Brian Morel may contact me by phone, text, or email about my request. Message and data rates may apply. Reply STOP to opt out.</span></label>
+          <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+          <label class="consent" style="text-transform:none;letter-spacing:0"><input type="checkbox" name="sms_consent" value="yes"><span>Text me about my request. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not required to get help. See our <a href="../privacy/" style="color:inherit;text-decoration:underline">Privacy Policy</a> and <a href="../sms-terms/" style="color:inherit;text-decoration:underline">SMS Terms</a>.</span></label>
+          <div data-turnstile></div>
+          <div data-lead-error hidden style="background:rgba(255,93,93,.12);border:1px solid rgba(255,93,93,.4);color:#ffb3b3;border-radius:12px;padding:12px 14px;font-size:14px"></div>
           <button type="submit" class="btn primary" style="width:100%;padding:18px">Book my free consultation
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </form>
@@ -666,7 +669,7 @@ html{overflow-x:hidden}
     </div>
     <div style="display:grid;gap:16px;justify-items:end">
       <a class="ig" href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@ceoteddy_</a>
-      <div class="links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#book">Contact</a></div>
+      <div class="links"><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a><a href="#book">Contact</a></div>
       <span style="font-size:12px;color:var(--muted)">© 2026 Brian Morel. All rights reserved.</span>
     </div>
   </div>
@@ -880,14 +883,7 @@ document.querySelectorAll('.faq button').forEach(b=>b.addEventListener('click',(
   if(!open){ f.classList.add('open'); const a=f.querySelector('.a'); a.style.maxHeight=a.scrollHeight+'px'; }
 }));
 
-/* ================= FORM ================= */
-document.getElementById('leadForm').addEventListener('submit',e=>{
-  e.preventDefault(); const f=e.target;
-  if(!f.checkValidity()){ f.reportValidity(); return; }
-  // TODO: wire to Supabase / booking tool. Payload below is ready to send.
-  const data=Object.fromEntries(new FormData(f).entries()); console.log('lead',data);
-  gsap.to(f,{opacity:0,y:-10,duration:.4,onComplete(){ f.style.display='none'; const s=document.getElementById('success'); s.style.display='block'; gsap.from(s,{opacity:0,y:20,duration:.6}); gsap.from('#success .ck',{scale:0,duration:.7,ease:'back.out(2)'}); }});
-});
+/* Form submission is handled by ../assets/lead.js */
 
 /* ================= CURSOR ================= */
 (function(){ const c=document.getElementById('cursor'); if(getComputedStyle(c).display==='none') return;
@@ -910,5 +906,7 @@ document.getElementById('leadForm').addEventListener('submit',e=>{
 </style>
 <div id="vsw" role="navigation" aria-label="Website versions"><span>Version</span><a href="../version-a/?v=3" data-v="a">A</a><a href="../version-b/?v=3" data-v="b">B</a><a href="../version-c/?v=3" data-v="c">C</a><a class="all" href="../?v=3">All</a></div>
 <script>(function(){var m=location.pathname.match(/\/version-([abc])\//);if(!m)return;var n=document.getElementById('vsw');n.style.display='flex';n.querySelector('[data-v="'+m[1]+'"]').classList.add('on');})();</script>
+<script src="../assets/site-config.js"></script>
+<script src="../assets/lead.js"></script>
 </body>
 </html>
