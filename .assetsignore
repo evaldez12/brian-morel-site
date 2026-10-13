@@ -1,0 +1,11 @@
+.git
+.github
+.gitignore
+.assetsignore
+.claude
+wrangler.jsonc
+worker.js
+functions
+node_modules
+proposal
+.wrangler
