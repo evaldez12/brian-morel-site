@@ -201,7 +201,7 @@ footer .links{display:flex;gap:18px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
-<body class="locked">
+<body class="locked" data-giveaway-pill>
 <div class="loader" id="loader"><div class="disp" id="loadNum">5<span>30</span></div></div>
 <canvas id="bg"></canvas>
 <div class="tint" id="tintR"></div><div class="tint g" id="tintG"></div>
@@ -306,7 +306,7 @@ footer .links{display:flex;gap:18px}
         <li><div><b>Personal funding.</b> Positioned so lenders say yes at better rates.</div></li>
         <li><div><b>Business funding.</b> Build a fundable business profile without draining personal credit.</div></li>
       </ul>
-      <div style="margin-top:30px"><a href="#book" class="btn g">Start with a free call</a></div>
+      <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap"><a href="#book" class="btn g">Start with a free call</a><a href="../funding/" class="btn o">Business funding options</a></div>
     </div>
   </div>
 </section>
@@ -363,7 +363,7 @@ footer .links{display:flex;gap:18px}
 
 <footer><div class="wrap">
   <div><b style="color:#fff;font-family:var(--display);font-size:22px;letter-spacing:.04em">BRIAN MOREL</b><p style="margin-top:10px;max-width:70ch">Individual results vary and depend on the accuracy and age of items on your report. No specific score or outcome is guaranteed. Brian Morel is not a law firm and does not provide legal advice. You have the right to dispute inaccurate information on your credit report directly with the credit bureaus at no cost.</p></div>
-  <div class="links"><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener">@ceoteddy_</a></div>
+  <div class="links"><a href="../funding/">Business funding</a><a href="../partners/">Referral partners</a><a href="../giveaway/" data-show-if="giveaway.live">Giveaway</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener">@ceoteddy_</a></div>
 </div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -456,7 +456,7 @@ document.querySelectorAll('.faq button').forEach(b=>b.addEventListener('click',(
 </style>
 <div id="vsw" role="navigation" aria-label="Website versions"><span>Version</span><a href="../version-a/?v=3" data-v="a">A</a><a href="../version-b/?v=3" data-v="b">B</a><a href="../version-c/?v=3" data-v="c">C</a><a class="all" href="../?v=3">All</a></div>
 <script>(function(){var m=location.pathname.match(/\/version-([abc])\//);if(!m)return;var n=document.getElementById('vsw');n.style.display='flex';n.querySelector('[data-v="'+m[1]+'"]').classList.add('on');})();</script>
-<script src="../assets/site-config.js"></script>
-<script src="../assets/lead.js"></script>
+<script src="../assets/site-config.js?v=4"></script>
+<script src="../assets/lead.js?v=4"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
   var script = document.currentScript;
   var BASE = script ? script.src.replace(/assets\/lead\.js.*$/, '') : '/';
   var host = location.hostname;
-  var DEMO = location.protocol === 'file:' || host === 'localhost' || host === '127.0.0.1' || /github\.io$/.test(host);
+  var DEMO = CFG.previewMode === true || location.protocol === 'file:' || host === 'localhost' || host === '127.0.0.1' || /github\.io$/.test(host);
 
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -164,8 +164,37 @@
     if (pending && window.fbq) window.fbq('track', 'Lead', { content_name: pending.form }, { eventID: pending.id });
   }
 
+  function showIf() {
+    document.querySelectorAll('[data-show-if]').forEach(function (el) {
+      if (!get(el.getAttribute('data-show-if'))) el.remove();
+    });
+  }
+
+  function giveawayPill() {
+    var g = CFG.giveaway || {};
+    if (!g.live || !document.body.hasAttribute('data-giveaway-pill')) return;
+    try { if (sessionStorage.getItem('bm_pill_closed')) return; } catch (e) {}
+    var css = document.createElement('style');
+    css.textContent = '#bmPill{position:fixed;right:16px;bottom:16px;z-index:94;display:flex;align-items:center;gap:12px;max-width:min(420px,calc(100vw - 24px));padding:12px 12px 12px 16px;border-radius:18px;background:#0b100d;border:1px solid rgba(43,226,106,.45);box-shadow:0 18px 40px -14px rgba(0,0,0,.8);font:500 14px/1.35 Inter,system-ui,sans-serif;color:#f4f7f5;animation:bmIn .5s ease 1.5s both}'
+      + '#bmPill b{color:#2BE26A}#bmPill a.go{flex:none;background:#2BE26A;color:#041007;text-decoration:none;font-weight:700;padding:10px 14px;border-radius:999px;white-space:nowrap}'
+      + '#bmPill button{flex:none;background:none;border:0;color:#9aa7a0;font-size:20px;line-height:1;cursor:pointer;padding:4px}'
+      + '@keyframes bmIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}'
+      + '@media(max-width:640px){#bmPill{left:12px;right:12px;max-width:none}}';
+    document.head.appendChild(css);
+    var pill = document.createElement('div');
+    pill.id = 'bmPill';
+    pill.innerHTML = '<span>\ud83c\udf81 <b>Giveaway:</b> win a free credit repair program</span><a class="go" href="' + BASE + 'giveaway/">Enter</a><button type="button" aria-label="Close">\u00d7</button>';
+    pill.querySelector('button').onclick = function () { pill.remove(); try { sessionStorage.setItem('bm_pill_closed', '1'); } catch (e) {} };
+    document.body.appendChild(pill);
+    // sit above the preview version switcher when it's showing
+    var vsw = document.getElementById('vsw');
+    if (vsw && getComputedStyle(vsw).display !== 'none') pill.style.bottom = '68px';
+  }
+
   function init() {
     firePendingLead();
+    showIf();
+    giveawayPill();
     document.querySelectorAll('form[data-lead-form]').forEach(wire);
     fill();
     loadTurnstile();

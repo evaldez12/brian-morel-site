@@ -6,6 +6,7 @@
   Cloudflare Pages > Settings > Environment variables. See LAUNCH notes.
 */
 window.SITE_CONFIG = {
+  previewMode: true,        // true = forms don't send anything (concept preview). Set to false at launch.
   brandName: 'Brian Morel Credit & Funding',
   legalName: '',            // e.g. 'Morel Credit & Funding LLC' once the LLC is formed
   ownerName: 'Brian Morel',
@@ -23,6 +24,7 @@ window.SITE_CONFIG = {
 
   fundingFeeTerms: '',      // e.g. 'X% of approved funding, due only after you are funded'
   giveaway: {
+    live: true,             // shows the giveaway pop-up and footer link on the main site. false when no giveaway is running
     startDate: '',          // e.g. 'January 6, 2027'
     endDate: '',            // e.g. 'January 19, 2027'
     endDateISO: '',         // e.g. '2027-01-19T23:59:00-05:00', drives the countdown

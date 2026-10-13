@@ -178,7 +178,7 @@ footer .links{display:flex;gap:18px;font-weight:600}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 </style>
 </head>
-<body>
+<body data-giveaway-pill>
 <nav><div class="bar">
   <a href="#top" class="logo"><i>BM</i>Brian Morel</a>
   <div class="links"><a href="#process">Process</a><a href="#services">Services</a><a href="#results">Results</a><a href="#faq">FAQ</a></div>
@@ -244,7 +244,7 @@ footer .links{display:flex;gap:18px;font-weight:600}
     <div class="grid3">
       <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></div><h3>Credit repair</h3><p>Remove what's inaccurate, outdated, or unverifiable from all three bureaus.</p><ul><li>Collections &amp; charge-offs</li><li>Late payments &amp; repos</li><li>Hard inquiries &amp; medical</li></ul></div>
       <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div><h3>Credit building plan</h3><p>A written plan to raise your score and keep it there.</p><ul><li>Which accounts to open, in order</li><li>Utilization &amp; payment timing</li><li>When to request limit increases</li></ul></div>
-      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></div><h3>Personal &amp; business funding</h3><p>Turn a clean profile into capital.</p><ul><li>Higher personal card limits</li><li>Personal funding at better rates</li><li>Fundable business profile</li></ul></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></div><h3>Personal &amp; business funding</h3><p>Turn a clean profile into capital.</p><ul><li>Higher personal card limits</li><li>Personal funding at better rates</li><li>Fundable business profile</li></ul><a href="../funding/" style="display:inline-block;margin-top:18px;font-weight:700;color:var(--green-ink);text-decoration:none">Business funding options →</a></div>
     </div>
   </div>
 </section>
@@ -312,7 +312,7 @@ footer .links{display:flex;gap:18px;font-weight:600}
 
 <footer><div class="wrap">
   <div><b style="color:#fff;font-size:16px">Brian Morel · Credit &amp; Funding</b><p style="margin-top:10px;max-width:70ch">Individual results vary and depend on the accuracy and age of items on your report. No specific score or outcome is guaranteed. Brian Morel is not a law firm and does not provide legal advice. You have the right to dispute inaccurate information on your credit report directly with the credit bureaus at no cost.</p></div>
-  <div class="links"><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener">@ceoteddy_</a></div>
+  <div class="links"><a href="../funding/">Business funding</a><a href="../partners/">Referral partners</a><a href="../giveaway/" data-show-if="giveaway.live">Giveaway</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../sms-terms/">SMS Terms</a><a href="https://instagram.com/ceoteddy_" target="_blank" rel="noopener">@ceoteddy_</a></div>
 </div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -413,7 +413,7 @@ document.querySelectorAll('.q button').forEach(b=>b.addEventListener('click',()=
 </style>
 <div id="vsw" role="navigation" aria-label="Website versions"><span>Version</span><a href="../version-a/?v=3" data-v="a">A</a><a href="../version-b/?v=3" data-v="b">B</a><a href="../version-c/?v=3" data-v="c">C</a><a class="all" href="../?v=3">All</a></div>
 <script>(function(){var m=location.pathname.match(/\/version-([abc])\//);if(!m)return;var n=document.getElementById('vsw');n.style.display='flex';n.querySelector('[data-v="'+m[1]+'"]').classList.add('on');})();</script>
-<script src="../assets/site-config.js"></script>
-<script src="../assets/lead.js"></script>
+<script src="../assets/site-config.js?v=4"></script>
+<script src="../assets/lead.js?v=4"></script>
 </body>
 </html>
